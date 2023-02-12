@@ -1,0 +1,49 @@
+Hierarchy of signs 1 {  
+  2 ---
+ 3 --
+ 4 -  
+ 5.
+ 
+{Package superpacman.area 
+ 
+---Levels (extends SuperPacmanArea): Level0- Level1- Level2- Level3(same as level two with extentions)
+
+---SuperpacmanArea: where the method createArea is present 
+---SuperPacmanBehavior: when the behavior of the area is coded, in general all the actors(keys and extensions excepted) are registered in this class with their colour on the grid.}
+ 
+{Package SuperPacman.Actor :
+---Class area entity
+--Wall: is fixed on the levels, has a neighborhood(a matrix of Booleans who indicates if its neighbors are also walls
+ 
+--Movable area Entity(implements interactor and interactable)
+-SuperpacmanPlayer (handles cell interaction(with the nested class SuperPacmanPlayerHandler and undergo view interaction)
+ 
+-Ghosts (Pinky, Inky, Blinky, Boss) (handle view interaction (with the nested class GhostHandler and undergo cell interaction)
+. Blinky(total random move by a generator of orientations)
+.IntelligentGhost (Inky[more secure because he still near to his refuge position when he is afraid (condition of maximum distance)]
+.(Pinky[take more risks and try to get away as far as possible from the player (with a generator of random move followed by a verification that the minimum distance is respected)])
+. (Boss[is faster than the other ghosts and has a bigger field of view], when it is scared, it has the same move and orientations than Pinky]
+ 
+--CollectableAreaEntity:
+ 
+-key (implements logic because it has an influence on the gates)
+ 
+-AutomaticallyCollectableEntity:
+.Diamonds(give 10 points and have an influence on the apparition of the boss)
+.Cherries(give 200 points)
+.Bonus: make the simple ghosts afraid during 10 seconds
+.Banana: make the player slower during 7 seconds.
+.Energy: give to the player 1 more hp.
+ 
+ 
+--gates: who are open or closed ( that depends on the signal given to them)
+ 
+--SuperPacmanPlayerStatusGUI: display information about the player (hp, score) and the fact that he won or lost.}
+ 
+{Package rpg.actor
+---doors (RPG Actor) who permit the transition from a level to another }
+ 
+ 
+{Package SuperPaman.handler
+---SuperPacmanInteractionVisitor: is implemented in superPacmanPlayerHandler: and it handles the interaction with all the interactable area entities.}
+
